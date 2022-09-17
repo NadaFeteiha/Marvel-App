@@ -38,12 +38,24 @@
 
     <style name="TextSubTitle" parent="TextAppearance.AppCompat.Body1">
         <item name="android:textColor">@color/white</item>
-        <item name="fontFamily">sans-serif-black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/futura_handwritten</item>
     </style>
 
     <style name="TextTitle" parent="TextAppearance.AppCompat.Title">
         <item name="android:textColor">@color/white</item>
-        <item name="fontFamily">sans-serif-black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/futura_handwritten</item>
+    </style>
+
+    <style name="TextNormal" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/futura_handwritten</item>
+    </style>
+
+    <style name="ToolbarTitle" parent="TextAppearance.AppCompat.Display2">
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/badlystamped</item>
     </style>
 
 

@@ -44,7 +44,6 @@ class CharacterViewModel : BaseViewModel() {
         state.toData()?.let {
             _characterState.postValue(State.Success(it))
             _character.postValue(it.dataResponse?.itemsResponse?.get(0))
-            Log.e("TESTTEST",it.dataResponse?.itemsResponse?.get(0)?.description.toString())
             _descriptionVisibility.postValue(it.dataResponse?.itemsResponse?.get(0)?.description?.isNotEmpty())
         }
     }

@@ -14,15 +14,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@string/comics"
+            app:titleTextAppearance="@style/ToolbarTitle" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/comics_recycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_marginHorizontal="@dimen/spacing_medium"
             android:orientation="vertical"
             app:isSuccess="@{viewModel.comicsState}"
             app:items="@{viewModel.comics}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
             tools:listitem="@layout/item_comic" />
 
         <com.airbnb.lottie.LottieAnimationView

@@ -1,5 +1,6 @@
 package com.nadafeteiha.marvel.util
 
+import android.text.Html
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -57,6 +58,14 @@ fun showImage(imageView: ImageView, thumbnail: Thumbnail?) {
             .error(R.mipmap.ic_launcher_adaptive_fore)
             .placeholder(R.drawable.loading_animation)
             .into(imageView)
+    }
+}
+
+
+@BindingAdapter("app:textWithHtml")
+fun showTextHtml(textView: TextView, value: String?) {
+    value?.let {
+        textView.text = Html.fromHtml(it)
     }
 }
 

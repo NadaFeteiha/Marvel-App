@@ -42,6 +42,7 @@
 
         <TextView
             android:id="@+id/rate_text"
+            style="@style/TextNormal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -56,6 +57,7 @@
 
         <TextView
             android:id="@+id/type_text"
+            style="@style/TextNormal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -69,6 +71,7 @@
 
         <TextView
             android:id="@+id/year_text"
+            style="@style/TextNormal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"

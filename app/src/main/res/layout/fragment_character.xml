@@ -52,14 +52,15 @@
 
         <TextView
             android:id="@+id/description_value_text"
+            style="@style/TextNormal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_medium"
             android:layout_marginTop="@dimen/spacing_too_small"
-            android:text="@{viewModel.character.description}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/description_text" />
+            app:layout_constraintTop_toBottomOf="@+id/description_text"
+            app:textWithHtml="@{viewModel.character.description}" />
 
         <androidx.constraintlayout.widget.Group
             android:layout_width="wrap_content"
