@@ -11,6 +11,7 @@ import com.nadafeteiha.marvel.util.Event
 import com.nadafeteiha.marvel.util.addTo
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 
 class SeriesViewModel : BaseViewModel(), SeriesInteractionListener {
 
@@ -37,7 +38,8 @@ class SeriesViewModel : BaseViewModel(), SeriesInteractionListener {
         _seriesState.postValue(State.Loading)
         repository.getSeries().observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
-            .subscribe(::onSuccessGetSeries, ::onErrorGetSeries).addTo(disposable)
+            .subscribe(::onSuccessGetSeries, ::onErrorGetSeries)
+            .addTo(disposable)
     }
 
 

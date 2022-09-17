@@ -24,4 +24,6 @@ data class ResponseItem(
     val name: String?,
     @SerializedName("type")
     val type: String?,
+    @SerializedName("textObjects")
+    val comicsText: List<Comic>?
 )
