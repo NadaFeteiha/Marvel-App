@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Marvel</string>
+
+    <!-- navigation   -->
+    <string name="series">Series</string>
+    <string name="events">Events</string>
+    <string name="comics">Comics</string>
+    <string name="year_series">%s - %s</string>
+    <string name="description">Description</string>
+
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.nadafeteiha.marvel.data.network.response.ResponseItem" />
+
+
+        <variable
+            name="listener"
+            type="com.nadafeteiha.marvel.ui.series.seriesDetails.SeriesCharacterInteractionListener" />
+
+    </data>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/characters_image"
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/spacing_small"
+        android:onClick="@{() -> listener.onClickSeries(viewModel.id)}"
+        android:scaleType="fitXY"
+        app:image="@{viewModel.thumbnail}"
+        app:shapeAppearanceOverlay="@style/roundMediumImage" />
+</layout>
