@@ -47,7 +47,7 @@
                 android:gravity="center"
                 android:lines="2"
                 android:minLines="2"
-                android:layout_margin="@dimen/spacing_too_small"
+                android:paddingVertical="@dimen/spacing_small"
                 android:text="@{viewModel.title}"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"

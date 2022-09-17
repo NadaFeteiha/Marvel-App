@@ -37,6 +37,7 @@
             android:gravity="center"
             android:lines="2"
             android:text="@{viewModel.details.seriesResponse.title}"
+            app:emptyTextVisibility="@{viewModel.details.seriesResponse.title}"
             app:layout_constraintTop_toBottomOf="@+id/series_image" />
 
         <TextView
@@ -44,8 +45,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:paddingStart="0dp"
+            android:paddingEnd="@dimen/spacing_small"
             android:text="@{viewModel.details.seriesResponse.rating}"
+            app:emptyTextVisibility="@{viewModel.details.seriesResponse.rating}"
             app:layout_constraintEnd_toStartOf="@+id/type_text"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title_text" />
 
@@ -54,7 +59,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:paddingStart="0dp"
+            android:paddingEnd="@dimen/spacing_small"
             android:text="@{viewModel.details.seriesResponse.type}"
+            app:emptyTextVisibility="@{viewModel.details.seriesResponse.type}"
             app:layout_constraintEnd_toStartOf="@+id/year_text"
             app:layout_constraintStart_toEndOf="@id/rate_text"
             app:layout_constraintTop_toBottomOf="@id/title_text" />
@@ -65,6 +73,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@{@string/year_series(viewModel.details.seriesResponse.startYear, viewModel.details.seriesResponse.endYear)}"
+            app:emptyTextVisibility="@{viewModel.details.seriesResponse.startYear.toString()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/type_text"
             app:layout_constraintTop_toBottomOf="@id/title_text" />

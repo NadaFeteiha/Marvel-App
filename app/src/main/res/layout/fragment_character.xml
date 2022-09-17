@@ -64,7 +64,7 @@
         <androidx.constraintlayout.widget.Group
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:constraint_referenced_ids="description_value_text,description_text,name_text,characters_image"
+            app:constraint_referenced_ids="description_value_text,name_text,characters_image"
             app:isSuccess="@{viewModel.characterState}" />
 
         <com.airbnb.lottie.LottieAnimationView

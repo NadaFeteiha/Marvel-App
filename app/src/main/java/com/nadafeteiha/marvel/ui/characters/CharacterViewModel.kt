@@ -1,5 +1,6 @@
 package com.nadafeteiha.marvel.ui.characters
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nadafeteiha.marvel.data.network.Repository
@@ -43,7 +44,8 @@ class CharacterViewModel : BaseViewModel() {
         state.toData()?.let {
             _characterState.postValue(State.Success(it))
             _character.postValue(it.dataResponse?.itemsResponse?.get(0))
-            _descriptionVisibility.postValue(!it.dataResponse?.itemsResponse?.get(0)?.description.isNullOrEmpty())
+            Log.e("TESTTEST",it.dataResponse?.itemsResponse?.get(0)?.description.toString())
+            _descriptionVisibility.postValue(it.dataResponse?.itemsResponse?.get(0)?.description?.isNotEmpty())
         }
     }
 

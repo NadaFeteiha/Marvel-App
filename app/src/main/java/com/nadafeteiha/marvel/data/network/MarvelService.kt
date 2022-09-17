@@ -25,7 +25,7 @@ interface MarvelService {
     ): Single<Response<APIResponse>>
 
 
-    @GET("series/{seriesID}/characters")//489
+    @GET("series/{seriesID}/characters")
     fun getCharacterInSpecificSeries(
         @Path("seriesID") seriesID: Int
     ): Single<Response<APIResponse>>

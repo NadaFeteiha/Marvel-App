@@ -32,7 +32,7 @@
 
     <style name="Theme.Starting" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/black</item>
-        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_adaptive_fore</item>
         <item name="postSplashScreenTheme">@style/Theme.Marvel</item>
     </style>
 

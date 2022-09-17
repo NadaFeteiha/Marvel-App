@@ -56,7 +56,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/comics_icon"
-            app:tint="@color/black" />
+            app:tint="@color/white" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -15,14 +15,12 @@ import com.squareup.picasso.Picasso
 
 @BindingAdapter("app:textVisibility")
 fun setTextVisibility(textView: TextView, visible: Boolean) {
-    when (visible) {
-        true -> {
-            textView.visibility = View.GONE
-        }
-        false -> {
-            textView.visibility = View.VISIBLE
-        }
-    }
+    textView.isVisible = visible
+}
+
+@BindingAdapter("app:emptyTextVisibility")
+fun setTextVisibilityInCaseEmptyText(textView: TextView, value: String?) {
+    textView.isVisible = !value.isNullOrEmpty()
 }
 
 @BindingAdapter("app:isSuccess")
@@ -52,12 +50,10 @@ fun <T> showAnimation(view: LottieAnimationView, state: State<T>?) {
 
 
 @BindingAdapter("app:image")
-fun <T> showImage(imageView: ImageView, thumbnail: Thumbnail?) {
+fun showImage(imageView: ImageView, thumbnail: Thumbnail?) {
     thumbnail?.let {
-        val imageURL = it.path + "." + it.extension
-
         Picasso.with(imageView.context)
-            .load(imageURL)
+            .load(thumbnail.convertToURL())
             .error(R.mipmap.ic_launcher_adaptive_fore)
             .placeholder(R.drawable.loading_animation)
             .into(imageView)
