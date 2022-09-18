@@ -52,7 +52,6 @@ abstract class BaseAdapter<T>(
 
     abstract class BaseViewHolder(binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root)
 
-
     inner class DiffUtils<T>(private val oldList: List<T>, private val newList: List<T>) :
         DiffUtil.Callback() {
         override fun getOldListSize() = oldList.size

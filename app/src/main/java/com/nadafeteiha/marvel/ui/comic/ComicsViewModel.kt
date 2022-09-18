@@ -31,11 +31,11 @@ class ComicsViewModel : BaseViewModel() {
         _comicsState.postValue(State.Loading)
         repository.getComics().observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
-            .subscribe(::onSuccessGetSeries, ::onErrorGetSeries).addTo(disposable)
+            .subscribe(::onSuccessGetComic, ::onErrorGetComic).addTo(disposable)
 
     }
 
-    private fun onSuccessGetSeries(state: State<APIResponse>) {
+    private fun onSuccessGetComic(state: State<APIResponse>) {
         state.toData()?.let {
             _comicsState.postValue(State.Success(it))
             it.dataResponse?.itemsResponse?.let {
@@ -44,11 +44,12 @@ class ComicsViewModel : BaseViewModel() {
         }
     }
 
-    private fun onErrorGetSeries(throwable: Throwable) {
+    private fun onErrorGetComic(throwable: Throwable) {
         _comicsState.postValue(State.Failure(throwable.message.toString()))
     }
 
     fun retryCallAPI() {
         callAPI()
     }
+
 }

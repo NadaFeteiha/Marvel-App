@@ -1,12 +1,10 @@
 package com.nadafeteiha.marvel.ui.series.seriesDetails
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nadafeteiha.marvel.data.SeriesDetails
 import com.nadafeteiha.marvel.data.network.Repository
 import com.nadafeteiha.marvel.data.network.State
-import com.nadafeteiha.marvel.data.network.response.APIResponse
 import com.nadafeteiha.marvel.ui.base.BaseViewModel
 import com.nadafeteiha.marvel.util.Event
 import com.nadafeteiha.marvel.util.addTo
@@ -68,4 +66,5 @@ class SeriesDetailsViewModel : BaseViewModel(), SeriesCharacterInteractionListen
         _seriesDetailsState.postValue(State.Loading)
         callApi()
     }
+
 }

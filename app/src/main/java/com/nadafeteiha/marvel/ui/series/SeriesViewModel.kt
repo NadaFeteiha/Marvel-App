@@ -1,6 +1,5 @@
 package com.nadafeteiha.marvel.ui.series
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nadafeteiha.marvel.data.network.Repository
@@ -11,7 +10,6 @@ import com.nadafeteiha.marvel.util.Event
 import com.nadafeteiha.marvel.util.addTo
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
-import java.util.concurrent.TimeUnit
 
 class SeriesViewModel : BaseViewModel(), SeriesInteractionListener {
 
@@ -70,4 +68,5 @@ class SeriesViewModel : BaseViewModel(), SeriesInteractionListener {
     fun retryCallAPI() {
         initData()
     }
+
 }

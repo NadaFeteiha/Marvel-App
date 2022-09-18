@@ -16,8 +16,6 @@ open class Event<out T>(private val content: T) {
             content
         }
     }
-
-    fun peekContent(): T = content
 }
 
 class EventObserve<T>(private val onEventUnhandledContent: (T) -> Unit) : Observer<Event<T>> {

@@ -42,7 +42,7 @@ class CharacterViewModel : BaseViewModel() {
             repository.getCharacterByID(it)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(::onSuccessGetCharacter, ::onErrorGetSeries).addTo(disposable)
+                .subscribe(::onSuccessGetCharacter, ::onErrorGetCharacter).addTo(disposable)
         }
     }
 
@@ -55,13 +55,13 @@ class CharacterViewModel : BaseViewModel() {
         }
     }
 
-    private fun onErrorGetSeries(throwable: Throwable) {
+    private fun onErrorGetCharacter(throwable: Throwable) {
         _characterState.postValue(State.Failure(throwable.message.toString()))
     }
-
 
     fun retryCallAPI() {
         _characterState.postValue(State.Loading)
         callCharacterAPI()
     }
+
 }

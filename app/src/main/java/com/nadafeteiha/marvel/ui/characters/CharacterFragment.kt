@@ -18,9 +18,7 @@ class CharacterFragment : BaseFragment<FragmentCharacterBinding, CharacterViewMo
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         viewModel.initCharacter(arguments.characterID)
     }
-
 
 }

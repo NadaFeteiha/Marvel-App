@@ -31,18 +31,11 @@ class MarvelInterceptor : Interceptor {
         return chain.proceed(request)
     }
 
-
     private fun getHash(timeStamp: String) = calculatedMd5(
         timeStamp +
                 BuildConfig.PRIVATE_KEY +
                 BuildConfig.PUBLIC_KEY
     )
-
-    private fun md5Hash(str: String): String {
-        val md = MessageDigest.getInstance("MD5")
-        val bigInt = BigInteger(1, md.digest(str.toByteArray(Charsets.UTF_8)))
-        return String.format("%032x", bigInt)
-    }
 
     private fun calculatedMd5(text: String): String {
         val messageDigest = getMd5Digest(text)

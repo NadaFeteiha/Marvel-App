@@ -7,9 +7,8 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface MarvelService {
-    @GET("series?")
+    @GET("series")
     fun getSeries(): Single<Response<APIResponse>>
-
 
     @GET("comics")
     fun getComics(): Single<Response<APIResponse>>

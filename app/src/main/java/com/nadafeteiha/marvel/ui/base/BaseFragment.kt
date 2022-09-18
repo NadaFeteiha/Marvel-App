@@ -33,5 +33,4 @@ abstract class BaseFragment<VDB : ViewDataBinding, VM: BaseViewModel> : Fragment
         }
     }
 
-
 }

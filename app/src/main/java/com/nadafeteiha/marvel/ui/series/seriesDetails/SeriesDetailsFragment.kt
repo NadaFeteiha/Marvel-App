@@ -42,4 +42,5 @@ class SeriesDetailsFragment : BaseFragment<FragmentSeriesDetailsBinding, SeriesD
             }
         })
     }
+
 }
