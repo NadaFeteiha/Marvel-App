@@ -29,17 +29,25 @@ class SeriesDetailsViewModel : BaseViewModel(), SeriesCharacterInteractionListen
     val navigateToCharactersDetails: LiveData<Event<Int>>
         get() = _navigateToCharactersDetails
 
+    private var seriesID: Int? = null
+
     init {
         _seriesDetailsState.postValue(State.Loading)
     }
 
     fun setSeriesID(seriesID: Int) {
-        repository.getSeriesDetailsWithCharacters(seriesID)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io())
-            .subscribe(::onSuccessGetSeries, ::onErrorGetSeries).addTo(disposable)
+        this.seriesID = seriesID
+        callApi()
     }
 
+    private fun callApi() {
+        seriesID?.let {
+            repository.getSeriesDetailsWithCharacters(it)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(::onSuccessGetSeries, ::onErrorGetSeries).addTo(disposable)
+        }
+    }
 
     private fun onSuccessGetSeries(state: State<SeriesDetails>) {
         state.toData()?.let {
@@ -54,5 +62,10 @@ class SeriesDetailsViewModel : BaseViewModel(), SeriesCharacterInteractionListen
 
     override fun onClickSeries(characterID: Int) {
         _navigateToCharactersDetails.postValue(Event(characterID))
+    }
+
+    fun retryCallAPI() {
+        _seriesDetailsState.postValue(State.Loading)
+        callApi()
     }
 }

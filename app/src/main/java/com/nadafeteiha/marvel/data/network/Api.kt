@@ -17,10 +17,10 @@ object Api {
 
     private val client = OkHttpClient
         .Builder()
-        .writeTimeout(30, TimeUnit.SECONDS)
+//        .writeTimeout(30, TimeUnit.SECONDS)
         .addInterceptor(interceptor)
         .addInterceptor(MarvelInterceptor())
-        .retryOnConnectionFailure(true)
+//        .retryOnConnectionFailure(true)
         .build()
 
 

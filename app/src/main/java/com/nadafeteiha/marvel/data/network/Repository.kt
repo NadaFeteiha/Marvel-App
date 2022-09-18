@@ -11,7 +11,8 @@ class Repository {
 
     fun getComics() = wrapperWithState { Api.marvelService.getComics() }
 
-    fun getCharacterByID(characterID :Int) = wrapperWithState { Api.marvelService.getCharacterByID(characterID) }
+    fun getCharacterByID(characterID: Int) =
+        wrapperWithState { Api.marvelService.getCharacterByID(characterID) }
 
     private fun getSeriesDetails(seriesID: Int) = wrapperWithState {
         Api.marvelService.getSeriesDetails(seriesID = seriesID)
@@ -22,12 +23,12 @@ class Repository {
     }
 
     fun getSeriesDetailsWithCharacters(seriesID: Int): Single<State<SeriesDetails>> {
-        return getSeriesDetails(seriesID).zipWith(
-            getCharacterInSpecificSeries(seriesID)
-        ) { seriesDetailsResponse: State<APIResponse>,
-            characterResponse: State<APIResponse> ->
-            combineResult(seriesDetailsResponse, characterResponse)
-        }
+        return getSeriesDetails(seriesID)
+            .zipWith(getCharacterInSpecificSeries(seriesID))
+            { seriesDetailsResponse: State<APIResponse>,
+              characterResponse: State<APIResponse> ->
+                combineResult(seriesDetailsResponse, characterResponse)
+            }
     }
 
     private fun combineResult(
@@ -45,7 +46,9 @@ class Repository {
                     )
                 }
             })
-        } else State.Failure("Combination error")
+        } else {
+            State.Failure("Combination error")
+        }
     }
 
 

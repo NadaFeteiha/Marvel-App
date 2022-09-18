@@ -1,6 +1,5 @@
 package com.nadafeteiha.marvel.ui.comic
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nadafeteiha.marvel.data.network.Repository
@@ -25,10 +24,15 @@ class ComicsViewModel : BaseViewModel() {
         get() = _comics
 
     init {
+        callAPI()
+    }
+
+    private fun callAPI() {
         _comicsState.postValue(State.Loading)
         repository.getComics().observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe(::onSuccessGetSeries, ::onErrorGetSeries).addTo(disposable)
+
     }
 
     private fun onSuccessGetSeries(state: State<APIResponse>) {
@@ -42,5 +46,9 @@ class ComicsViewModel : BaseViewModel() {
 
     private fun onErrorGetSeries(throwable: Throwable) {
         _comicsState.postValue(State.Failure(throwable.message.toString()))
+    }
+
+    fun retryCallAPI() {
+        callAPI()
     }
 }

@@ -24,6 +24,11 @@ fun setTextVisibilityInCaseEmptyText(textView: TextView, value: String?) {
     textView.isVisible = !value.isNullOrEmpty()
 }
 
+@BindingAdapter("app:isFailed")
+fun <T> showWhenFailed(view: View, state: State<T>?) {
+    view.isVisible = state is State.Failure
+}
+
 @BindingAdapter("app:isSuccess")
 fun <T> showWhenSuccess(view: View, state: State<T>?) {
     view.isVisible = state is State.Success

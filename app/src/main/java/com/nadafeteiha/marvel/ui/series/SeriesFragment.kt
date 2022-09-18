@@ -47,4 +47,5 @@ class SeriesFragment : BaseFragment<FragmentSeriesBinding, SeriesViewModel>() {
             }
         })
     }
+
 }

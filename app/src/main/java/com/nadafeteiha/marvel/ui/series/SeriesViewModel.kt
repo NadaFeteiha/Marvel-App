@@ -35,13 +35,16 @@ class SeriesViewModel : BaseViewModel(), SeriesInteractionListener {
         get() = _navigateToSeriesDetails
 
     init {
+        initData()
+    }
+
+    private fun initData() {
         _seriesState.postValue(State.Loading)
         repository.getSeries().observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe(::onSuccessGetSeries, ::onErrorGetSeries)
             .addTo(disposable)
     }
-
 
     private fun onSuccessGetSeries(state: State<APIResponse>) {
         state.toData()?.let {
@@ -62,5 +65,9 @@ class SeriesViewModel : BaseViewModel(), SeriesInteractionListener {
 
     override fun onClickSeries(seriesID: Int) {
         _navigateToSeriesDetails.postValue(Event(seriesID))
+    }
+
+    fun retryCallAPI() {
+        initData()
     }
 }

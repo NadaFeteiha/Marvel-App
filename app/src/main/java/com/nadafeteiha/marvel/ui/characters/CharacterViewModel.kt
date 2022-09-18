@@ -1,6 +1,5 @@
 package com.nadafeteiha.marvel.ui.characters
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nadafeteiha.marvel.data.network.Repository
@@ -27,17 +26,25 @@ class CharacterViewModel : BaseViewModel() {
     val descriptionVisibility: LiveData<Boolean>
         get() = _descriptionVisibility
 
+    private var characterID: Int? = null
+
     init {
         _characterState.postValue(State.Loading)
     }
 
     fun initCharacter(characterID: Int) {
-        repository.getCharacterByID(characterID)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io())
-            .subscribe(::onSuccessGetCharacter, ::onErrorGetSeries).addTo(disposable)
+        this.characterID = characterID
+        callCharacterAPI()
     }
 
+    private fun callCharacterAPI() {
+        characterID?.let {
+            repository.getCharacterByID(it)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(::onSuccessGetCharacter, ::onErrorGetSeries).addTo(disposable)
+        }
+    }
 
     private fun onSuccessGetCharacter(state: State<APIResponse>) {
         _characterState.postValue(state)
@@ -52,4 +59,9 @@ class CharacterViewModel : BaseViewModel() {
         _characterState.postValue(State.Failure(throwable.message.toString()))
     }
 
+
+    fun retryCallAPI() {
+        _characterState.postValue(State.Loading)
+        callCharacterAPI()
+    }
 }

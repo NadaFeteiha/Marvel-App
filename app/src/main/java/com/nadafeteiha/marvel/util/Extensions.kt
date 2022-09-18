@@ -8,5 +8,4 @@ fun Disposable.addTo(compositeDisposable: CompositeDisposable) {
     compositeDisposable.add(this)
 }
 
-
 fun Thumbnail.convertToURL() = this.path + "." + this.extension

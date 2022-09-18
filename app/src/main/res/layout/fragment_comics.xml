@@ -51,6 +51,25 @@
             app:lottie_loop="true"
             app:setAnimation="@{viewModel.comicsState}" />
 
+
+        <Button
+            android:id="@+id/retry_button"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.retryCallAPI()}"
+            android:text="@string/retry_button"
+            android:textColor="@color/white"
+            app:icon="@drawable/ic_retry"
+            app:iconGravity="start"
+            app:iconPadding="@dimen/spacing_small"
+            app:iconTint="@color/white"
+            app:isFailed="@{viewModel.comicsState}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/state_lottie" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
